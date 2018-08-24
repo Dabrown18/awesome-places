@@ -23,7 +23,12 @@ export default class App extends Component {
 	};
 	
 	placeDeletedHandler = () => {
-		
+		this.setState((prevState) => ({
+			places: prevState.places.filter(place => {
+				return place.key !== prevState.selectedPlace.key;
+			}),
+			selectedPlace: null
+		}))
 	};
 	
 	modalClosedHandler = () => {
@@ -38,11 +43,6 @@ export default class App extends Component {
 				return place.key === key;
 			})
 		}))
-	   // this.setState((prevState) => ({
-	   // 	places: prevState.places.filter(place => {
-	   // 	   return place.key !== key;
-       //   })
-	   // }))
    };
 
 	
