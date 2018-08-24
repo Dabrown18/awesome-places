@@ -1,28 +1,19 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
+import PlaceInput from './src/components/PlaceInput';
 import ListItem from './src/components/ListItem'
 
 export default class App extends Component {
-  state = {
-    placeName: "",
-     places: []
-  };
+   state = {
+      places: []
+   };
 
-  placeNameChangedHandler = (val) => {
-    this.setState(() => ({
-    	placeName: val
-    }))
-  };
+	placeAddedHandler = (placeName) => {
 
-  placeSubmitHandler = () => {
-    if (this.state.placeName.trim() === "") {
-      return;
-    }
-
-    this.setState((prevState) => ({
-       places: prevState.places.concat(prevState.placeName)
-    }))
-  };
+		this.setState((prevState) => ({
+			places: prevState.places.concat(placeName)
+		}))
+	};
 
   render() {
     const placesOutput = this.state.places.map((place, i) => (
@@ -30,22 +21,8 @@ export default class App extends Component {
     ));
     return (
       <View style={styles.container}>
-        <View style={styles.inputContainer}>
-			  <TextInput
-				  style={styles.placeInput}
-				  placeholder="An awesome place"
-				  value={this.state.placeName}
-				  onChangeText={this.placeNameChangedHandler}
-			  />
-			  <Button
-             style={styles.placeButton}
-              title="Add"
-             onPress={this.placeSubmitHandler}
-           />
-        </View>
-        <View
-           style={styles.listContainer}
-        >
+        <PlaceInput onPlaceAdded={this.placeAddedHandler}/>
+        <View style={styles.listContainer}>
            {placesOutput}
         </View>
       </View>
@@ -61,18 +38,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'flex-start',
   },
-  inputContainer: {
-    flexDirection: "row",
-     justifyContent: "space-between",
-     alignItems: "center",
-     width: "100%"
-  },
-   placeInput: {
-    width: "70%"
-   },
-   placeButton: {
-    width: "30%"
-   },
    listContainer: {
      width: "100%"
    }
