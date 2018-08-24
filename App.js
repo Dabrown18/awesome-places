@@ -43,7 +43,11 @@ export default class App extends Component {
              onPress={this.placeSubmitHandler}
            />
         </View>
-        <View>{placesOutput}</View>
+        <View
+           style={styles.listContainer}
+        >
+           {placesOutput}
+        </View>
       </View>
     );
   }
@@ -68,5 +72,8 @@ const styles = StyleSheet.create({
    },
    placeButton: {
     width: "30%"
+   },
+   listContainer: {
+     width: "100%"
    }
 });
