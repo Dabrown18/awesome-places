@@ -39,7 +39,11 @@ export default class App extends Component {
 
     return (
       <View style={styles.container}>
-			<PlaceDetail selectedPlace={this.state.selectedPlace}/>
+			<PlaceDetail
+				selectedPlace={this.state.selectedPlace}
+				onItemDeleted={this.placeDeletedHandler}
+				onModalClosed={this.modalClosedHandler}
+			/>
          <PlaceInput onPlaceAdded={this.placeAddedHandler}/>
          <PlaceList
 				places={this.state.places}
