@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { StyleSheet, View } from 'react-native';
-import PlaceInput from './src/components/PlaceInput';
-import PlaceList from './src/components/PlaceList'
-import placeImage from './src/assets/beautiful-place.jpg'
+import PlaceInput           from './src/components/PlaceInput';
+import PlaceList            from './src/components/PlaceList';
+import PlaceDetail          from './src/components/PlaceDetail';
 
 export default class App extends Component {
    state = {
-      places: []
+      places: [],
+		selectedPlace: null
    };
 
 	placeAddedHandler = (placeName) => {
@@ -14,25 +15,36 @@ export default class App extends Component {
 			places: prevState.places.concat({
             key: Math.random(),
             name: placeName,
-				image: placeImage
+				image: {
+            	uri: "https://media.istockphoto.com/photos/paradise-beach-picture-id509488176?k=6&m=509488176&s=612x612&w=0&h=xUkao6mVjcKAAQNnf0aB5kKEfvg98pl1QzTSvSi-8PE="
+				}
 			})
 		}))
 	};
 
-	placeDeletedHandler = (key) => {
-	   this.setState((prevState) => ({
-	   	places: prevState.places.filter(place => {
-	   	   return place.key !== key;
-         })
-	   }))
+	placeSelectedHandler = (key) => {
+		this.setState((prevState) => ({
+			selectedPlace: prevState.places.find(place => {
+				return place.key === key;
+			})
+		}))
+	   // this.setState((prevState) => ({
+	   // 	places: prevState.places.filter(place => {
+	   // 	   return place.key !== key;
+       //   })
+	   // }))
    };
 
   render() {
 
     return (
       <View style={styles.container}>
+			<PlaceDetail selectedPlace={this.state.selectedPlace}/>
          <PlaceInput onPlaceAdded={this.placeAddedHandler}/>
-         <PlaceList places={this.state.places} onItemDeleted={this.placeDeletedHandler}/>
+         <PlaceList
+				places={this.state.places}
+				onItemSelected={this.placeSelectedHandler}
+			/>
       </View>
     );
   }
