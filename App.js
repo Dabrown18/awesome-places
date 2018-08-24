@@ -21,6 +21,16 @@ export default class App extends Component {
 			})
 		}))
 	};
+	
+	placeDeletedHandler = () => {
+		
+	};
+	
+	modalClosedHandler = () => {
+		this.setState(() => ({
+			selectedPlace: null
+		}))
+	};
 
 	placeSelectedHandler = (key) => {
 		this.setState((prevState) => ({
@@ -35,6 +45,8 @@ export default class App extends Component {
 	   // }))
    };
 
+	
+
   render() {
 
     return (
@@ -42,7 +54,7 @@ export default class App extends Component {
 			<PlaceDetail
 				selectedPlace={this.state.selectedPlace}
 				onItemDeleted={this.placeDeletedHandler}
-				onModalClosed={this.modalClosedHandler}
+				onModalClose={this.modalClosedHandler}
 			/>
          <PlaceInput onPlaceAdded={this.placeAddedHandler}/>
          <PlaceList
