@@ -19,3 +19,9 @@ export const selectPlace = (key) => {
 		placeKey: key
 	}
 };
+
+export const deselectPlace = () => {
+	return {
+		type: DESELECT_PLACE
+	}
+}
