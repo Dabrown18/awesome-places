@@ -20,9 +20,7 @@ class App extends Component {
 	};
 	
 	modalClosedHandler = () => {
-		this.setState(() => ({
-			selectedPlace: null
-		}))
+		this.props.onDeselectPlace();
 	};
 
 	placeSelectedHandler = (key) => {
