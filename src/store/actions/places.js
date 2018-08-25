@@ -24,4 +24,4 @@ export const deselectPlace = () => {
 	return {
 		type: DESELECT_PLACE
 	}
-}
+};
