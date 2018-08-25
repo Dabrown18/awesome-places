@@ -19,6 +19,14 @@ const reducer = (state = initialState, action) => {
 					}
 				})
 			};
+		case DELETE_PLACE:
+			return {
+				...state,
+				places: state.places.filter(place => {
+					return place.key !== state.selectedPlace.key;
+				}),
+				selectedPlace: null
+			};
 		default:
 			return state;
 	}
