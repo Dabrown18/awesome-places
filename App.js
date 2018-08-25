@@ -24,11 +24,7 @@ class App extends Component {
 	};
 
 	placeSelectedHandler = (key) => {
-		this.setState((prevState) => ({
-			selectedPlace: prevState.places.find(place => {
-				return place.key === key;
-			})
-		}))
+		this.props.onSelectPlace(key);
    };
 
 	
