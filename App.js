@@ -5,24 +5,14 @@ import { connect } from 'react-redux';
 import PlaceInput           from './src/components/PlaceInput';
 import PlaceList            from './src/components/PlaceList';
 import PlaceDetail          from './src/components/PlaceDetail';
+
 import { addPlace, selectPlace, deselectPlace, deletePlace } from './src/store/actions';
 
 class App extends Component {
-   state = {
-      places: [],
-		selectedPlace: null
-   };
+
 
 	placeAddedHandler = (placeName) => {
-		this.setState((prevState) => ({
-			places: prevState.places.concat({
-            key: Math.random(),
-            name: placeName,
-				image: {
-            	uri: "https://media.istockphoto.com/photos/paradise-beach-picture-id509488176?k=6&m=509488176&s=612x612&w=0&h=xUkao6mVjcKAAQNnf0aB5kKEfvg98pl1QzTSvSi-8PE="
-				}
-			})
-		}))
+		this.props.onAddPlace(placeName);
 	};
 	
 	placeDeletedHandler = () => {
