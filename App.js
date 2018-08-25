@@ -16,12 +16,7 @@ class App extends Component {
 	};
 	
 	placeDeletedHandler = () => {
-		this.setState((prevState) => ({
-			places: prevState.places.filter(place => {
-				return place.key !== prevState.selectedPlace.key;
-			}),
-			selectedPlace: null
-		}))
+		this.props.onDeletePlace();
 	};
 	
 	modalClosedHandler = () => {
@@ -79,7 +74,7 @@ const MapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
 	return {
 		onAddPlace: (name)   => dispatch(addPlace(name)),
-		onDeletePlaces: ()   => dispatch(deletePlace()),
+		onDeletePlace: ()   => dispatch(deletePlace()),
 		onSelectPlace: (key) => dispatch(selectPlace(key)),
 		onDeselectPlace: ()  => dispatch(deselectPlace())
 	}
