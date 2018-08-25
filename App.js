@@ -27,20 +27,18 @@ class App extends Component {
 		this.props.onSelectPlace(key);
    };
 
-	
-
   render() {
 
     return (
       <View style={styles.container}>
 			<PlaceDetail
-				selectedPlace={this.state.selectedPlace}
+				selectedPlace={this.props.selectedPlace}
 				onItemDeleted={this.placeDeletedHandler}
 				onModalClosed={this.modalClosedHandler}
 			/>
          <PlaceInput onPlaceAdded={this.placeAddedHandler}/>
          <PlaceList
-				places={this.state.places}
+				places={this.props.places}
 				onItemSelected={this.placeSelectedHandler}
 			/>
       </View>
@@ -68,7 +66,7 @@ const MapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
 	return {
 		onAddPlace: (name)   => dispatch(addPlace(name)),
-		onDeletePlace: ()   => dispatch(deletePlace()),
+		onDeletePlace: ()    => dispatch(deletePlace()),
 		onSelectPlace: (key) => dispatch(selectPlace(key)),
 		onDeselectPlace: ()  => dispatch(deselectPlace())
 	}

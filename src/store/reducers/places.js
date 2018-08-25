@@ -11,7 +11,7 @@ const reducer = (state = initialState, action) => {
 			return {
 				// Copies properties of the old state
 				...state,
-				places: prevState.places.concat({
+				places: state.places.concat({
 					key: Math.random(),
 					name: action.placeName,
 					image: {
