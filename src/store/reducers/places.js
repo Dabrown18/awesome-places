@@ -34,6 +34,11 @@ const reducer = (state = initialState, action) => {
 					return place.key === action.placeKey;
 				})
 			};
+		case DESELECT_PLACE:
+			return {
+				...state,
+				selectedPlace: null
+			};
 		default:
 			return state;
 	}
