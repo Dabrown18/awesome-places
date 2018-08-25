@@ -6,3 +6,9 @@ export const addPlace = (placeName) => {
 		placeName
 	}
 };
+
+export const deletePlace = () => {
+	return {
+		type: DELETE_PLACE
+	}
+};
