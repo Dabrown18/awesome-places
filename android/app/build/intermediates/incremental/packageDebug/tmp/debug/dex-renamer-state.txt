@@ -1,4 +1,4 @@
-#Sun Aug 26 17:15:26 MDT 2018
-base.0=/Users/DarronBrown/development/mobile/react-native/tutorials/rn-course/android/app/build/intermediates/transforms/dexMerger/debug/17
+#Mon Aug 27 15:49:08 MDT 2018
+base.0=/Users/DarronBrown/development/mobile/react-native/tutorials/awesome-places/android/app/build/intermediates/transforms/dexMerger/debug/0
 renamed.0=classes.dex
 path.0=classes.dex
